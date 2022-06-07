@@ -1,4 +1,4 @@
-use axum::{response::Json, routing::get, Router};
+use axum::{routing::get, Router};
 use std::net::SocketAddr;
 
 #[tokio::main]
@@ -15,7 +15,8 @@ async fn main() {
         .unwrap();
 }
 
-async fn handler() -> Json<String> {
+async fn handler() -> String {
     let target = std::env::var("TARGET").unwrap();
-    Json(target)
+    let s = format!("{}\n", target);
+    return s;
 }
